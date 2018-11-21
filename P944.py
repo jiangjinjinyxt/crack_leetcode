@@ -4,7 +4,7 @@ https://leetcode.com/problems/delete-columns-to-make-sorted/description
 
 solution
 	just iterate through columns
-		in each column, if in ascending order, 
+		in each column, if not in ascending order
 """
 
 class Solution(object):

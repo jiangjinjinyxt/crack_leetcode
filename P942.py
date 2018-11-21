@@ -14,6 +14,20 @@ solution
 				means the previous value is 'I'
 				counter = current index
 			if counter is not None
+				means the previous value is 'D'
+				continue
+		if currentt value is 'I'
+			if counter is None
+				update counter as the current index
+			else
+				reverse the elements in [counter, current_index]
+	out of loop
+	if cunter is not None
+		means the last series is in ascending order, but require 'D'
+		revers the elements in [counter, last_index]
+	else
+		means the last value is 'I'
+		do nothing
 """
 
 class Solution(object):
