@@ -27,4 +27,5 @@ class Solution:
                 temp_max = idx - previous_index
                 if temp_max > max_len:
                     max_len = temp_max
+            look_up[value] = idx
         return max_len
