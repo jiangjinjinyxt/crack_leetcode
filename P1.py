@@ -3,7 +3,12 @@ problem 1: two sum
 https://leetcode.com/problems/two-sum/
 
 solution:
-	dictionary
+    usage: dictionary
+    use a dictionary to remember the indexes of 
+    values inconutered;
+    once find the difference of the target and 
+    current value in the dictionary, report the
+    index of the difference and the current value.
 """
 
 class Solution(object):
