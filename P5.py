@@ -4,6 +4,9 @@ https://leetcode.com/problems/median-of-two-sorted-arrays/
 
 solution:
     Dynamic programming
+
+Detailed explanation:
+    https://leetcode.com/problems/longest-palindromic-substring/solution/
 """
 
 
