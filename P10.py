@@ -42,6 +42,48 @@ solution:
 
 """  
 
+# memorization
+class Solution:
+    def isMatch(self, text, pattern):
+        memory = {}
+        len_text = len(text)
+        len_pattern = len(pattern)
+
+        memory[(0, 0)] = True
+        def dp(i, j):
+            # i, j represents ith char text and jth char in pattern
+            if (i, j) not in memory:
+                if not j:
+                    ans = False
+                elif not i:
+                    if j % 2:
+                        ans = False
+                    else:
+                        if pattern[j - 1] == '*':
+                            ans = dp(i, j - 2)
+                        else:
+                            ans = False
+                else:
+                    if pattern[j - 1] == text[i - 1] or pattern[j - 1] == '.':
+                        ans = dp(i - 1, j - 1)
+                    elif pattern[j - 1] == '*':
+                        if j == 1:
+                            ans = False
+                        else:
+                            if pattern[j - 2] == text[i - 1] or pattern[j - 2] == '.':
+                                ans = dp(i - 1, j) or dp(i, j - 2)
+                            else:
+                                ans = dp(i, j - 2)
+                    else:
+                        ans = False
+                memory[(i, j)] = ans
+            return memory[(i, j)]
+
+        dp(len_text, len_pattern)
+        # print(memory)
+        return memory[(len_text, len_pattern)]
+
+
 class Solution(object):
     def isMatch(self, text, pattern):
         memo = {}
