@@ -18,6 +18,32 @@ solution:
 
 """  
 
+
+class Solution:
+    def threeSumClosest(self, nums, target):
+        nums.sort()
+        total = nums[0] + nums[1] + nums[2]
+        diff = abs(total - target)
+        if not diff:
+            return target
+        length = len(nums)
+        for idx, value in enumerate(nums[:-2]):
+            low = idx + 1
+            high = length - 1
+            while low < high:
+                temp_total = value + nums[low] + nums[high]
+                if temp_total == target:
+                    return temp_total
+                else:
+                    if abs(temp_total - target) < diff:
+                        total = temp_total
+                        diff = abs(temp_total - target)
+                    if temp_total > target:
+                        high -= 1
+                    else:
+                        low += 1
+        return total
+                
 class Solution:
     def threeSumClosest(self, nums, target):
         """
