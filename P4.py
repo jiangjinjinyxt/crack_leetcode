@@ -55,6 +55,47 @@ solution:
 
 class Solution:
     def findMedianSortedArrays(self, nums1, nums2):
+        len1 = len(nums1)
+        len2 = len(nums2)
+        if len1 > len2:
+            len1, len2 = len2, len1
+            nums1, nums2 = nums2, nums1
+        if len2 == 0:
+            # or raise ValueError
+            return None
+        idxmin = 0
+        idxmax = len1
+        total_len = (len1 + len2 + 1) // 2
+        while idxmin <= idxmax:
+            index1 = idxmin + (idxmax - idxmin) // 2
+            index2 = total_len - index1
+            if index1 > 0 and nums1[index1 - 1] > nums2[index2]:
+                # index1 too big
+                idxmax = index1 - 1
+            elif index1 < m and nums2[index2 - 1] > nums1[index1]:
+                # index1 too small
+                idxmin = index1 + 1
+            else:
+                # perfect
+                if index1 == 0:
+                    left_max = nums2[index2 - 1]
+                elif index2 == 0:
+                    left_max = nums1[index1 - 1]
+                else:
+                    left_max = max(nums1[index1 - 1], nums2[index2 - 1])
+
+                if (len1 + len2) % 2:
+                    return left_max
+
+                if index1 == len1:
+                    right_min = nums2[index2]
+                elif index2 == len2:
+                    right_min = nums1[index1]
+                else:
+                    right_min = min(nums1[index1], nums2[index2])
+                return (left_max + right_min) / 2
+class Solution:
+    def findMedianSortedArrays(self, nums1, nums2):
         """
         :type nums1: List[int]
         :type nums2: List[int]

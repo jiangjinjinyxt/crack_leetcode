@@ -49,6 +49,38 @@ class Solution:
                     i += 1
         return auxiliary
 
+class Sequence:
+    def match(self, sub_sequence, sequence):
+        len_sub = len(sub_sequence)
+        len_seq = len(sequence)
+        # corner case
+        if len_seq < len_sub or not len_sub:
+            return -1
+            
+        self.auxiliary = [-1] * len_sub
+        self.helper(sub_sequence)
+        
+        index = 0
+        while index + len_sub <= len_seq:
+            i = 0
+            while sequence[index] == sub_sequence[i] and i < len_sub:
+                i += 1
+                index += 1
+            if i == len_sub:
+                return index - len_sub + 1
+            else:
+                pass
+    def helper(self, sequence):
+        index = 0
+        for idx, value in enumerate(sequence[1:]):
+            idx += 1
+            if value == sequence[index]:
+                index += 1
+                self.auxiliary[idx] = index
+            else:
+                index = 0
+                if value == sequence[0]:
+                    self.auxiliary_[idx] = 1
 
 # rabin-karp, use rolling hash
 class Solution:
