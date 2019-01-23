@@ -3,8 +3,11 @@ problem 977: Squares of a Sorted Array
 https://leetcode.com/problems/squares-of-a-sorted-array/
 
 solution:
-    
-
+    two pointers, one start from the left most, one start from the right most
+    if value at the left index >= 0, or value at the right index <=0, both are
+     esay to deal with.
+    else compare thetwo values at the left index and the right index to decide
+    which one to add
 """  
 
 class Solution:
