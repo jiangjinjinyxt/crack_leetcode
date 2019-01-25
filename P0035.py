@@ -16,19 +16,35 @@ class Solution:
         :rtype: int
         """
         def binary_search(left, right):
-            while left < right:
+            if left <= right:
                 if nums[left] >= target:
                     return left
-                elif nums[right - 1] <= target:
-                    return right
+                elif nums[right] < target:
+                    return right + 1
                 else:
                     middle = left + (right - left) // 2
                     if nums[middle] == target:
                         return middle
                     elif nums[middle] > target:
-                        return binary_search(left, middle)
+                        return binary_search(left, middle - 1)
                     else:
-                        return binary_search(middle, right)
-            return 0
+                        return binary_search(middle + 1, right)
+            else:
+                return left
 
-        return binary_search(0, len(nums))
+        def binary_search_v2(left, right):
+            while left <= right:
+                if nums[left] >= target:
+                    return left
+                elif nums[right] < target:
+                    return right + 1
+                else:
+                    middle = left + (right - left) // 2
+                    if nums[middle] == target:
+                        return middle
+                    elif nums[middle] > target:
+                        right = middle - 1
+                    else:
+                        left = middle + 1
+            return left
+        return binary_search_v2(0, len(nums) - 1)
