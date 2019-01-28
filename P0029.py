@@ -6,7 +6,36 @@ solution:
     bitwise operation
 
 """ 
-# kmp
+class Solution:
+    def divide(self, divide, divisor):
+        MAXIMUM = 2 **31
+        sign = (divide < 0) == (divisor < 0)
+
+        if divide < 0:
+            divide = - divide
+        if divisor < 0:
+            divisor = - divisor
+
+        result = 0
+        while divide >= divisor:
+            current_poly = 1
+            divisor_copy = divisor
+            while divide > divisor_copy:
+                current_poly <<= 1
+                divisor_copy <<= 1
+            if divide < divisor_copy:
+                current_poly >>= 1
+            result += current_poly
+            if divide == divisor_copy:
+                break
+            else:
+                divisor_copy >>= 1
+                divide -= divisor_copy
+        if sign:
+            return min(MAXIMUM - 1, result)
+        else:
+            return - min(MAXIMUM, result)
+
 class Solution:
     def divide(self, dividend, divisor):
         """
