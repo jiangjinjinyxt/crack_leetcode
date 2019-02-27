@@ -21,3 +21,16 @@ class Solution(object):
             else:
                 ans = chr(character + 64) + ans
         return ans
+
+class Solution(object):
+    def convertToTitle(self, n):
+        """
+        :type n: int
+        :rtype: str
+        """
+        ans = ""
+        while n:
+            character = (n - 1) % 26
+            n = (n - 1) // 26
+            ans = chr(65 + character) + ans
+        return ans
