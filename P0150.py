@@ -25,6 +25,5 @@ class Solution(object):
             else:
                 stack.append(int(i))
         return stack.pop()
-    
 
 
