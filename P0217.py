@@ -1,7 +1,7 @@
 """
-Problem 217: Contain Duplicate
+Problem 217. Contain Duplicate
+https://leetcode.com/problems/contains-duplicate/
 
-https://leetcode.com/problems/contain-duplicate/
 solution:
 
 """
@@ -15,6 +15,5 @@ class Solution(object):
         for i in nums:
             if i in table:
                 return True
-            else:
-                table.add(i)
+            table.add(i)
         return False
